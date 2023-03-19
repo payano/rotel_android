@@ -20,9 +20,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        RotelLib lib = new RotelLib();
-        System.out.println("HAHA");
-        lib.sayHelloz();
+        //RotelLib lib = RotelLib.getInstance();
+        //System.out.println("HAHA");
+        //lib.sayHelloz();
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());

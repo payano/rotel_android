@@ -4,13 +4,25 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class RotelLib {
+    private static RotelLib instance = null;
     static {
         System.loadLibrary("rotel");
     }
 
-    public RotelLib() {
+    public static RotelLib getInstance() {
+        if(instance == null) {
+            instance = new RotelLib();
+        }
+        return instance;
+    }
+
+    private RotelLib() {
         System.out.println("YOLO");
-        cpp_init();
+        //cpp_init();
+    }
+    public Boolean connect(String ipaddress) {
+
+        return false;
     }
 
     @Override
@@ -18,6 +30,8 @@ public class RotelLib {
         cpp_deinit();
     }
     public void sayHelloz() {
+
+        /*
         HashMap<Integer, ArrayList<Integer>> features = cpp_getFeatures();
         HashMap<COMMAND_TYPE, ArrayList<Integer>> command_types = new HashMap<>();
         features.forEach((key,value) -> {
@@ -54,6 +68,7 @@ public class RotelLib {
             command_types.put(cmd, v);
         });
         System.out.println("converted...");
+         */
     }
 
     public void getSettings() {
@@ -65,7 +80,9 @@ public class RotelLib {
 
     private native HashMap<Integer, String> cpp_getSettings();
     // Declare a native method sayHello() that receives no arguments and returns void
-    private native void sayHello();
+    private native void sayHello(String ipaddr);
+
+    private native void sss(String s);
     private native HashMap<Integer, ArrayList<Integer>> cpp_getFeatures();
 
     public static COMMAND_TYPE commandTypeIntToEnum(Integer val) {
